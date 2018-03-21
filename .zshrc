@@ -59,10 +59,14 @@ ZSH_THEME="bureau"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker node archlinux docker-compose vault systemd
+  git docker node archlinux docker-compose vault systemd ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# enable ssh agent forwarding
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent lifetime 8h
 
 # User configuration
 
