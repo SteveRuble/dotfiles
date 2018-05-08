@@ -59,7 +59,7 @@ ZSH_THEME="bureau"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker node archlinux docker-compose vault systemd ssh-agent
+  git docker node npm archlinux docker-compose vault systemd ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -96,3 +96,13 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias rz="source ~/.zshrc"
+
+alias docker="sudo docker"
+alias docker-compose="sudo docker-compose"
