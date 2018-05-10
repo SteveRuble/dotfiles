@@ -106,3 +106,7 @@ alias rz="source ~/.zshrc"
 
 alias docker="sudo docker"
 alias docker-compose="sudo docker-compose"
+
+export VAULT_ADDR=https://vault.n5o.green
+
+
