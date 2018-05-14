@@ -109,5 +109,3 @@ alias docker-compose="sudo docker-compose"
 
 export VAULT_ADDR=https://vault.n5o.green
 
-
-export HTTP_PROXY=http://localhost:2000
