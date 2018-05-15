@@ -109,3 +109,8 @@ alias docker-compose="sudo docker-compose"
 
 export VAULT_ADDR=https://vault.n5o.green
 
+
+export GOBIN="$HOME/go/bin"
+export GOPATH="$HOME/go"
+export GOROOT="/usr/lib/go"
+export PATH="$PATH:$GOBIN"
