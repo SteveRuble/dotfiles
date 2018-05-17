@@ -59,7 +59,7 @@ ZSH_THEME="bureau"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker node npm archlinux docker-compose vault systemd ssh-agent
+  git docker node npm archlinux docker-compose vault systemd ssh-agent aws
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -114,3 +114,6 @@ export GOBIN="$HOME/go/bin"
 export GOPATH="$HOME/go"
 export GOROOT="/usr/lib/go"
 export PATH="$PATH:$GOBIN"
+
+alias startdev="aws ec2 start-instances --instance-ids i-0690ba7980cedaf0f"
+alias stopdev="aws ec2 stop-instances --instance-ids i-0690ba7980cedaf0f"
