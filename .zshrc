@@ -104,8 +104,8 @@ export NVM_DIR="$HOME/.nvm"
 
 alias rz="source ~/.zshrc"
 
-alias docker="sudo docker"
-alias docker-compose="sudo docker-compose"
+alias docker="sudo -E docker"
+alias docker-compose="sudo -E docker-compose"
 
 export VAULT_ADDR=https://vault.n5o.green
 
@@ -113,7 +113,7 @@ export VAULT_ADDR=https://vault.n5o.green
 export GOBIN="$HOME/go/bin"
 export GOPATH="$HOME/go"
 export GOROOT="/usr/lib/go"
-export PATH="$PATH:$GOBIN"
+export PATH="$GOBIN:$GOROOT/bin:$PATH"
 
 alias startdev="aws ec2 start-instances --instance-ids i-0690ba7980cedaf0f"
 alias stopdev="aws ec2 stop-instances --instance-ids i-0690ba7980cedaf0f"
