@@ -190,6 +190,7 @@ bindsym $mod+m mode "$mode_display"
 bindsym XF86MonBrightnessUp exec lux -a 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec lux -s 10 # decrease screen brightness
 
+exec --no-startup-id albert
 
-exec xbindkeys
+exec --no-startup-id xbindkeys
 
