@@ -112,8 +112,12 @@ export VAULT_ADDR=https://vault.n5o.green
 
 export GOBIN="$HOME/go/bin"
 export GOPATH="$HOME/go"
-export GOROOT="/usr/lib/go"
+export GOROOT="/usr/local/go"
 export PATH="$GOBIN:$GOROOT/bin:$PATH"
 
 alias startdev="aws ec2 start-instances --instance-ids i-0690ba7980cedaf0f"
 alias stopdev="aws ec2 stop-instances --instance-ids i-0690ba7980cedaf0f"
+
+
+alias blueenv="export VAULT_ADDR=https://vault.n5o.blue"
+alias greenenv="export VAULT_ADDR=https://vault.n5o.green"

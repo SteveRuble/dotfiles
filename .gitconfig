@@ -23,3 +23,5 @@
     keepBackup = false
 [credential]
 	helper = cache
+[core]
+	editor = nano
