@@ -121,3 +121,9 @@ alias stopdev="aws ec2 stop-instances --instance-ids i-0690ba7980cedaf0f"
 
 alias blueenv="export VAULT_ADDR=https://vault.n5o.blue"
 alias greenenv="export VAULT_ADDR=https://vault.n5o.green"
+
+export SPARK_HOME=~/sdks/spark
+export PATH=$SPARK_HOME/bin:$PATH
+
+export KAFKA_BIN=~/bin/spark/bin
+export PATH=$KAFKA_BIN:$PATH

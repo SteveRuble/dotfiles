@@ -25,3 +25,4 @@
 	helper = cache
 [core]
 	editor = nano
+	excludesfile = /home/steve/.gitignore_global
