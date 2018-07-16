@@ -127,3 +127,5 @@ export PATH=$SPARK_HOME/bin:$PATH
 
 export KAFKA_BIN=~/bin/spark/bin
 export PATH=$KAFKA_BIN:$PATH
+
+
