@@ -6,7 +6,7 @@ System notes:
 
 When using go + mage + docker:
 - Using visudo:
-  1. Add the value of $(which go) to secure_path
+  1. Add the directory containing the value of $(which go) to secure_path
   2. Add this line:
    ```
    Defaults env_keep += "GOPATH GOROOT"
