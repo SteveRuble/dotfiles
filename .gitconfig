@@ -22,7 +22,8 @@
     trustExitCode = false
     keepBackup = false
 [credential]
-	helper = cache
+	helper = cache --timeout=3600
 [core]
 	editor = nano
 	excludesfile = /home/steve/.gitignore_global
+	autocrlf = input

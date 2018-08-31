@@ -39,7 +39,7 @@ ZSH_THEME="bureau"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -54,13 +54,18 @@ ZSH_THEME="bureau"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+setopt histignorespace
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker node npm archlinux docker-compose vault systemd ssh-agent aws
+  git docker node npm archlinux docker-compose vault systemd ssh-agent aws kubectl helm
 )
+
+fpath=(~/.completions $fpath)
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,7 +110,9 @@ export NVM_DIR="$HOME/.nvm"
 alias rz="source ~/.zshrc"
 
 alias docker="sudo -E docker"
+alias d="sudo -E docker"
 alias docker-compose="sudo -E docker-compose"
+alias dc="sudo -E docker-compose"
 
 export VAULT_ADDR=https://vault.n5o.green
 
@@ -128,4 +135,14 @@ export PATH=$SPARK_HOME/bin:$PATH
 export KAFKA_BIN=~/bin/spark/bin
 export PATH=$KAFKA_BIN:$PATH
 
+export PATH=$HOME/bin:/snap/bin:$PATH
 
+
+alias k="kubectl"
+
+alias flush-dns="sudo systemd-resolve --flush-caches"
+
+
+function forget() {
+  LC_ALL=C sed -i "/$1/d" $HISTFILE
+}

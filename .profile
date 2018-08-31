@@ -27,4 +27,4 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 
-keychain --eval --agents ssh id_rsa 
+#keychain --eval --agents ssh id_rsa 
