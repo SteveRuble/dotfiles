@@ -109,10 +109,7 @@ export NVM_DIR="$HOME/.nvm"
 
 alias rz="source ~/.zshrc"
 
-alias docker="sudo -E docker"
-alias d="sudo -E docker"
-alias docker-compose="sudo -E docker-compose"
-alias dc="sudo -E docker-compose"
+
 
 export VAULT_ADDR=https://vault.n5o.green
 
@@ -125,12 +122,6 @@ export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH"
 alias startdev="aws ec2 start-instances --instance-ids i-0690ba7980cedaf0f"
 alias stopdev="aws ec2 stop-instances --instance-ids i-0690ba7980cedaf0f"
 
-
-alias vaultblue="export VAULT_ADDR=https://vault.n5o.blue VAULT_TOKEN=\$(lpass show --password 3324219216113289275)"
-alias vaultgreen="export VAULT_ADDR=https://vault.n5o.green VAULT_TOKEN=\$(lpass show --password 3745818468311014309)"
-alias vaultred="export VAULT_ADDR=http://vault.n5o.red VAULT_TOKEN=root"
-alias vaulttoken="vault token lookup --format=json | jq -r .data.id"
-
 export SPARK_HOME=~/sdks/spark
 export PATH=$SPARK_HOME/bin:$PATH
 
@@ -138,33 +129,6 @@ export KAFKA_BIN=~/bin/spark/bin
 export PATH=$KAFKA_BIN:$PATH
 
 export PATH=$HOME/bin:/snap/bin:$PATH
-
-
-alias k="kubectl"
-
-alias flush-dns="sudo systemd-resolve --flush-caches"
-
-function setenv() {
-
-case $1 in
-  "blue") 
-    vaultblue
-    export AWS_DEFAULT_PROFILE=blue
-    echo "environment set to blue"
-    ;;
-  "green") 
-    vaultgreen 
-    export AWS_DEFAULT_PROFILE=green
-    echo "environment set to green"
-    ;;
-  "red") 
-    vaultred 
-    export AWS_DEFAULT_PROFILE=green
-    echo "environment set to red/local; AWS will not work"
-    ;;
-esac
-
-}
 
 function forget() {
   LC_ALL=C sed -i "/$1/d" $HISTFILE
