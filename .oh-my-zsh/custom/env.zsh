@@ -18,10 +18,12 @@ function awsenv() {
         awsProfile=black
         ;;
     "red") 
-        awsProfile=invalid
-        echo "environment set to red/local; AWS will not work"
+        awsProfile=black
+        echo "environment set to red/local; AWS set to black."
         ;;
     esac
+
+    export AWS_DEFAULT_PROFILE=$awsProfile
 }
 
 function vaultenv() {
@@ -32,50 +34,45 @@ function vaultenv() {
         ;;
     "green") 
         vaultAddr=https://vault.n5o.green 
-        vaultToken=$(lpass show --password 3745818468311014309)
+        vaultToken=root #$(lpass show --password 3745818468311014309)
         ;;
     "black") 
         vaultAddr=https://vault.n5o.blue 
         vaultToken=$(lpass show --password 3324219216113289275)        
         ;;
     "red") 
-        vaultAddr=https://vault.n5o.red 
+        vaultAddr=http://vault.n5o.red 
         vaultToken=root
         ;;
     esac
 
+    export VAULT_ADDR=$vaultAddr
+    export VAULT_TOKEN=$vaultToken
 }
 
 function kubeenv() {
     case $1 in
       "blue") 
-        kubeContext=arn:aws:eks:us-east-1:759703860832:cluster/blue 
+        kubeContext=blue
         ;;
     "green") 
-        kubeContext=arn:aws:eks:us-east-1:696021726152:cluster/green
+        kubeContext=green
         ;;
     "black") 
-       kubeContext=arn:aws:eks:us-east-1:759703860832:cluster/blue 
+       kubeContext=black
         ;;
     "red") 
         kubeContext=minikube 
         ;;
     esac
-}
 
-function apply(){
-    export AWS_DEFAULT_PROFILE=$awsProfile
-    export VAULT_ADDR=$vaultAddr
-    export VAULT_TOKEN=$vaultToken
     kubectl config use-context $kubeContext
 }
-
 
 function setenv() {
 
     awsenv $1
     kubeenv $1
     vaultenv $1
-    apply
 
 }

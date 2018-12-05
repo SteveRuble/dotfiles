@@ -40,6 +40,13 @@ Thumbs.db
 # IDE junk
 /.idea/workspace.xml
 /.idea/tasks.xml
+/.idea 
 
 # Node junk
 /node_modules/*
+
+
+# specific files
+
+# don't check in IDE files for helmsman project
+**/helmsman/.idea
