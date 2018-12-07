@@ -27,3 +27,5 @@
 	editor = nano
 	excludesfile = /home/steve/.gitignore_global
 	autocrlf = input
+[hub]
+	protocol = ssh

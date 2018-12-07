@@ -10,3 +10,8 @@ alias dc="sudo -E docker-compose"
 alias clipboard="xclip -sel clip"
 
 alias wifi="nmtui"
+
+alias xrandr-sd="$HOME/.screenlayout/scaled-docked.sh"
+alias xrandr-a="xrandr --auto"
+
+alias git=hub

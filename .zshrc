@@ -63,8 +63,10 @@ setopt histignorespace
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker node npm archlinux docker-compose vault systemd ssh-agent aws kubectl helm
+  git docker node npm archlinux docker-compose vault systemd ssh-agent aws kubectl helm zsh-completions
 )
+
+autoload -U compinit && compinit
 
 fpath=(~/.completions $fpath)
 
@@ -198,3 +200,5 @@ fpath=($fpath "/home/steve/.zfunctions")
 
 export DATAFLOW_CONTRACTS_PATH=/home/steve/src/github.com/naveego/dataflow-contracts
 export DEVOPS_PATH=/home/steve/src/github.com/naveegoinc/devops
+
+source ~/.config/hub.env
