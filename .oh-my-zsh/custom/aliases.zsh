@@ -15,3 +15,5 @@ alias xrandr-sd="$HOME/.screenlayout/scaled-docked.sh"
 alias xrandr-a="xrandr --auto"
 
 alias git=hub
+
+alias volume=alsamixer
