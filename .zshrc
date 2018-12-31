@@ -63,7 +63,9 @@ setopt histignorespace
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker node npm archlinux docker-compose vault systemd ssh-agent aws kubectl helm zsh-completions
+  git docker node npm docker-compose 
+  vault systemd ssh-agent aws kubectl helm zsh-completions
+  zsh-autosuggestions
 )
 
 autoload -U compinit && compinit
@@ -106,6 +108,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source $HOME/.oh-my-zsh/custom/bosun-spaceship.zsh
 
 SPACESHIP_PROMPT_ORDER=(
   #time          # Time stamps section
@@ -133,6 +136,7 @@ SPACESHIP_PROMPT_ORDER=(
   dotnet        # .NET section
   ember         # Ember.js section
   kubecontext   # Kubectl context section
+  bosun
   exec_time     # Execution time
   line_sep      # Line break
   battery       # Battery level and status
@@ -153,6 +157,7 @@ SPACESHIP_BATTERY_SHOW=true
 SPACESHIP_EXIT_CODE_SHOW=true
 
 SPACESHIP_KUBECONTEXT_PREFIX=""
+
 
 # https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Options.md
 
