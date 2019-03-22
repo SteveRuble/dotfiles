@@ -2,6 +2,8 @@
 
 alias k="kubectl"
 
+alias kaf="~/go/bin/kaf"
+
 alias flush-dns="sudo /etc/init.d/dns-clean restart"
 
 alias d="sudo -E docker"
@@ -18,14 +20,14 @@ alias git=hub
 
 alias volume=alsamixer
 
-alias useMinikubeDocker="eval $(minikube docker-env)"
+function docker-use-minikube() {
+     eval $(minikube docker-env)
+}
 
-alias bounce-traefik="k delete pod -n kube-system --selector=app=traefik"
 
-alias docker-use-minikube="eval $(minikube docker-env)"
-
-alias bosun-red="eval $(bosun env red)"
-alias bosun-green="eval $(bosun env green)"
+function bosun-env() {
+     eval $(bosun env $1)
+}
 alias b="bosun"
 
 alias kafka-helper="kubectl run -i -t kafka-helper --restart=Never --rm=true --image=docker.n5o.black/utils/kafka-helper --overrides='{ \"apiVersion\": \"v1\", \"spec\": { \"imagePullSecrets\": [{\"name\": \"docker-n5o-black\"}] } }'"
@@ -36,3 +38,15 @@ function kube-proxy-dashboard() {
      name=$(k get -n kube-system pods --selector=app=kubernetes-dashboard -o jsonpath='{$.items[0].metadata.name}')
      k port-forward -n kube-system $name 9090
 }
+
+alias edit-aliases="code --wait /home/steve/.oh-my-zsh/custom/aliases.zsh && source /home/steve/.oh-my-zsh/custom/aliases.zsh"
+alias edit-zsh="code --wait /home/steve/.zshrc && source ~/.zshrc"
+alias edit-bosun="code --wait /home/steve/.bosun/bosun.yaml"
+
+alias kube-dnstools="kubectl run -it --rm --restart=Never --image=infoblox/dnstools:latest dnstools"
+
+function show-cert(){
+     openssl x509 -text -noout -in $1
+}
+
+alias busybox="kubectl run -it --rm --restart=Never --image=busybox busybox"

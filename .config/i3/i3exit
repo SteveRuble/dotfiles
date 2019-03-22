@@ -11,7 +11,9 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        lock && systemctl suspend
+        xrandr --output DP-1-1-8 --off --output DP-1-8 --off 
+        lock
+        systemctl suspend
         ;;
     hibernate)
         systemctl hibernate

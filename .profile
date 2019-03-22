@@ -27,4 +27,12 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 
+
+export GOBIN="$HOME/go/bin"
+export GOPATH="$HOME/go"
+export GOROOT="/usr/local/go"
+export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH"
+
+
 #keychain --eval --agents ssh id_rsa 
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

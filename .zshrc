@@ -108,6 +108,12 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export GOBIN="$HOME/go/bin"
+export GOPATH="$HOME/go"
+export GOROOT="/usr/local/go"
+export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH"
+
+
 source $HOME/.oh-my-zsh/custom/bosun-spaceship.zsh
 
 SPACESHIP_PROMPT_ORDER=(
@@ -172,11 +178,8 @@ source $HOME/.oh-my-zsh/plugins/kafka-zsh-completions/kafka.zsh
 
 export VAULT_ADDR=https://vault.n5o.green
 
+export EDITOR="code --wait"
 
-export GOBIN="$HOME/go/bin"
-export GOPATH="$HOME/go"
-export GOROOT="/usr/local/go"
-export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH"
 
 alias startdev="aws ec2 start-instances --instance-ids i-0690ba7980cedaf0f"
 alias stopdev="aws ec2 stop-instances --instance-ids i-0690ba7980cedaf0f"
@@ -207,3 +210,7 @@ export DATAFLOW_CONTRACTS_PATH=/home/steve/src/github.com/naveego/dataflow-contr
 export DEVOPS_PATH=/home/steve/src/github.com/naveegoinc/devops
 
 source ~/.config/hub.env
+
+nvm use v10.4.0 >> /dev/null
+
+$(bosun env current)
