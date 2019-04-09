@@ -4,7 +4,7 @@ alias k="kubectl"
 
 alias kaf="~/go/bin/kaf"
 
-alias flush-dns="sudo /etc/init.d/dns-clean restart"
+alias flush-dns="sudo systemctl restart systemd-resolved.service"
 
 alias d="sudo -E docker"
 alias dc="sudo -E docker-compose"
@@ -50,3 +50,7 @@ function show-cert(){
 }
 
 alias busybox="kubectl run -it --rm --restart=Never --image=busybox busybox"
+
+function edit(){
+     code --wait $1
+}
