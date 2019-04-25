@@ -1,2 +1,7 @@
 *
 hub.env
+
+!.screenlayout/
+!scripts/
+!.config/i3/
+!.config/kitty/

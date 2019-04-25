@@ -38,12 +38,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-xrandr --dpi 144
+xrandr --dpi 96
 
 #twm &
 #xclock -geometry 50x50-1+1 &
 #xterm -geometry 80x50+494+51 &
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export GDK_SCALE=1
 
 i3

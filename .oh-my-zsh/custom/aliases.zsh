@@ -4,7 +4,7 @@ alias k="kubectl"
 
 alias kaf="~/go/bin/kaf"
 
-alias flush-dns="sudo /etc/init.d/dns-clean restart"
+alias flush-dns="sudo systemctl restart systemd-resolved.service"
 
 alias d="sudo -E docker"
 alias dc="sudo -E docker-compose"
@@ -14,6 +14,7 @@ alias clipboard="xclip -sel clip"
 alias wifi="nmtui"
 
 alias xrandr-sd="$HOME/.screenlayout/scaled-docked.sh"
+alias xrandr-v="$HOME/.screenlayout/visiontek.sh"
 alias xrandr-a="xrandr --auto"
 
 alias git=hub
@@ -50,3 +51,10 @@ function show-cert(){
 }
 
 alias busybox="kubectl run -it --rm --restart=Never --image=busybox busybox"
+
+function edit(){
+     code --wait $1
+}
+
+# always run gotop with individual cpus and battery
+alias gotop="gotop -b -p -c monokai"

@@ -35,4 +35,4 @@ export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH"
 
 
 #keychain --eval --agents ssh id_rsa 
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
