@@ -63,10 +63,15 @@ setopt histignorespace
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git docker node npm docker-compose 
-  vault systemd ssh-agent aws kubectl helm zsh-completions
+  git docker npm docker-compose vault systemd 
+  ssh-agent 
+  aws 
+  kubectl 
+  helm zsh-completions
   zsh-autosuggestions
 )
+
+# skip_global_compinit=1
 
 autoload -U compinit && compinit
 
@@ -173,22 +178,16 @@ export NVM_DIR="$HOME/.nvm"
 
 alias rz="source ~/.zshrc"
 
-source $HOME/.oh-my-zsh/plugins/kafka-zsh-completions/kafka.zsh
-
-
 export VAULT_ADDR=https://vault.n5o.green
 
 export EDITOR="code --wait"
 
-
-alias startdev="aws ec2 start-instances --instance-ids i-0690ba7980cedaf0f"
-alias stopdev="aws ec2 stop-instances --instance-ids i-0690ba7980cedaf0f"
-
-export SPARK_HOME=~/sdks/spark
+export SPARK_HOME=/usr/local/spark
 export PATH=$SPARK_HOME/bin:$PATH
 
-export KAFKA_BIN=$HOME/bin/kafka/bin
-export PATH=$KAFKA_BIN:$PATH
+export KAFKA_BIN=$HOME/bin/kafka/
+export SPARK_BIN=/opt/spark/bin
+export PATH=$KAFKA_BIN:$SPARK_BIN:$PATH:
 
 export PATH=$HOME/bin:/snap/bin:$PATH
 
@@ -209,8 +208,10 @@ fpath=($fpath "/home/steve/.zfunctions")
 export DATAFLOW_CONTRACTS_PATH=/home/steve/src/github.com/naveego/dataflow-contracts
 export DEVOPS_PATH=/home/steve/src/github.com/naveegoinc/devops
 
-source ~/.config/hub.env
+export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
-nvm use v10.4.0 >> /dev/null
+#source ~/.config/hub.env
 
-$(bosun env current)
+#nvm use v10.4.0 >> /dev/null
+
+#$(bosun env current)

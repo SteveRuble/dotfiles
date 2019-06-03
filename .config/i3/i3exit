@@ -11,7 +11,7 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        xrandr --output DP-1-1-8 --off --output DP-1-8 --off 
+        xrandr --output DVI-I-1-1 --off --output DVI-I-2-2 --off 
         lock
         systemctl suspend
         ;;
