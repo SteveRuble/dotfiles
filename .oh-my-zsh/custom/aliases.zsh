@@ -60,3 +60,9 @@ function edit(){
 alias gotop="gotop -b -p -c monokai"
 
 alias noipv6=" sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1 & sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1 "
+
+alias ks="kubectl -n kube-system"
+
+alias ls="ls -al --color"
+
+alias git-back="git checkout @{-1}"
