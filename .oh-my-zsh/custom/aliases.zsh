@@ -26,7 +26,7 @@ function docker-use-minikube() {
 }
 
 
-function bosun-env() {
+function be() {
      eval $(bosun env $1)
 }
 alias b="bosun"
@@ -41,6 +41,7 @@ function kube-proxy-dashboard() {
 }
 
 alias edit-aliases="code --wait /home/steve/.oh-my-zsh/custom/aliases.zsh && source /home/steve/.oh-my-zsh/custom/aliases.zsh"
+alias reload-aliases="source /home/steve/.oh-my-zsh/custom/aliases.zsh"
 alias edit-zsh="code --wait /home/steve/.zshrc && source ~/.zshrc"
 alias edit-bosun="code --wait /home/steve/.bosun/bosun.yaml"
 
@@ -59,10 +60,23 @@ function edit(){
 # always run gotop with individual cpus and battery
 alias gotop="gotop -b -p -c monokai"
 
-alias noipv6=" sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1 & sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1 "
+function noipv6(){
+ sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1 
+ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1 
+ sudo sysctl -w net.ipv6.conf.wlp59s0.disable_ipv6=1 
+}
 
 alias ks="kubectl -n kube-system"
 
 alias ls="ls -al --color"
 
 alias git-back="git checkout @{-1}"
+
+alias snip="scrot -s '$HOME/images/shots/%Y-%m-%d-%k-%M-%S.png'"
+
+alias reload-aliases="source /home/steve/.oh-my-zsh/custom/aliases.zsh"
+
+alias kld="k logs -n default --follow --tail 1000"
+alias klt="k logs -n tenants --follow --tail 1000"
+alias kd="k -n default"
+alias kt="k -n tenants"

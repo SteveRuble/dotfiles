@@ -57,6 +57,7 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 setopt histignorespace
+setopt INC_APPEND_HISTORY
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -193,6 +194,7 @@ export PATH=$HOME/bin:/snap/bin:$PATH
 
 function forget() {
   LC_ALL=C sed -i "/$1/d" $HISTFILE
+  fc -R
 }
 
 export LD_LIBRARY_PATH=/usr/lib/oracle/12.2/client64/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
@@ -215,3 +217,12 @@ export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 #nvm use v10.4.0 >> /dev/null
 
 #$(bosun env current)
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/steve/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/steve/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/steve/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/steve/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH=/home/steve/bin:$PATH
+
+[[ -e "/home/steve/bin/oracle-cli/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/home/steve/bin/oracle-cli/lib/python3.6/site-packages/oci_cli/bin/oci_autocomplete.sh"
