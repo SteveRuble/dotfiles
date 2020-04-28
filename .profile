@@ -31,8 +31,10 @@ fi
 export GOBIN="$HOME/go/bin"
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
-export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH"
+export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 
 #keychain --eval --agents ssh id_rsa 
 #eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+export PATH="$HOME/.cargo/bin:$PATH"
