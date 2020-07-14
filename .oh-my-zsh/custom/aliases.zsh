@@ -132,3 +132,6 @@ alias window-id="xwininfo"
 
 # Read consumer offsets:
 # kafka-console-consumer --consumer-property enable.auto.commit=false --consumer-property exclude.internal.topics=false --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" --bootstrap-server localhost:9092 --topic __consumer_offsets --from-beginning
+
+
+alias mk="microk8s kubectl"

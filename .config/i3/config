@@ -150,10 +150,10 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 
-bindsym $mod+Shift+v move workspace to output right
-bindsym $mod+Shift+w move workspace to output left
-bindsym $mod+Shift+/ move workspace to output up
-bindsym $mod+Shift+- move workspace to output down
+bindsym $mod+Shift+m move workspace to output left
+bindsym $mod+Shift+w move workspace to output up
+bindsym $mod+Shift+v move workspace to output down
+bindsym $mod+Shift+z move workspace to output right
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -190,15 +190,15 @@ mode "$mode_display" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+m mode "$mode_display"
+bindsym $mod+b mode "$mode_display"
 
 bindsym XF86MonBrightnessUp exec lux -a 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec lux -s 10 # decrease screen brightness
 
 bindsym 0x1008ff12 exec pavucontrol
 
-workspace "1: terminal" output eDP-1
-workspace "2: ide" output DVI-I-1-1
+workspace "1: terminal" output DVI-I-1-1
+workspace "2: ide" output eDP-1
 workspace "3: browser" output DVI-I-2-2
 
 exec --no-startup-id /home/steve/.config/i3/standard.sh

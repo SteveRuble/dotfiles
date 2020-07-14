@@ -173,7 +173,7 @@ SPACESHIP_KUBECONTEXT_PREFIX=""
 
 # https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Options.md
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="/usr/share/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -190,7 +190,7 @@ export KAFKA_BIN=$HOME/bin/kafka/
 export SPARK_BIN=/opt/spark/bin
 export PATH=$KAFKA_BIN:$SPARK_BIN:$PATH:
 
-export PATH=$HOME/bin:/snap/bin:$PATH
+export PATH=$HOME/bin:/snap/bin:/usr/sbin:$PATH
 
 function forget() {
   LC_ALL=C sed -i "/$1/d" $HISTFILE

@@ -24,7 +24,7 @@
 [credential]
 	helper = cache --timeout=3600
 [core]
-	editor = micro
+	editor = code --wait
 	excludesfile = /home/steve/.gitignore_global
 	autocrlf = input
 	pager = less -F -X
