@@ -192,14 +192,17 @@ mode "$mode_display" {
 }
 bindsym $mod+b mode "$mode_display"
 
+bindsym $mod+Print exec /home/steve/scripts/snip.sh
+#bindsym $mod+Print exec --no-startup-id "$(/home/steve/scripts/snip.sh)"
+
 bindsym XF86MonBrightnessUp exec lux -a 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec lux -s 10 # decrease screen brightness
 
 bindsym 0x1008ff12 exec pavucontrol
 
-workspace "1: terminal" output DVI-I-1-1
+workspace "1: terminal" output DVI-I-2-2
 workspace "2: ide" output eDP-1
-workspace "3: browser" output DVI-I-2-2
+workspace "3: browser" output DVI-I-1-1
 
 exec --no-startup-id /home/steve/.config/i3/standard.sh
 

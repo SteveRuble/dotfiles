@@ -33,6 +33,11 @@ function be() {
 }
 alias b="bosun"
 
+function syncrelease(){
+     bosun release update current $1
+     bosun deploy plan release
+}
+
 alias kafka-helper="kubectl run -i -t kafka-helper --restart=Never --rm=true --image=docker.n5o.black/utils/kafka-helper --overrides='{ \"apiVersion\": \"v1\", \"spec\": { \"imagePullSecrets\": [{\"name\": \"docker-n5o-black\"}] } }'"
 alias cassandra-cqlsh="kubectl run -i -t cassandra-helper --restart=Never --rm=true --image=docker.n5o.black/utils/cqlsh --overrides='{ \"apiVersion\": \"v1\", \"spec\": { \"imagePullSecrets\": [{\"name\": \"docker-n5o-black\"}] } }'"
 
@@ -100,10 +105,6 @@ alias snip="scrot -s '$HOME/images/shots/%Y-%m-%d-%k-%M-%S.png'"
 
 alias reload-aliases="source /home/steve/.oh-my-zsh/custom/aliases.zsh"
 
-alias kld="k logs -n default --follow --tail 1000"
-alias klt="k logs -n tenants --follow --tail 1000"
-alias kd="k -n default"
-alias kt="k -n tenants"
 
 
 
@@ -135,3 +136,40 @@ alias window-id="xwininfo"
 
 
 alias mk="microk8s kubectl"
+
+alias start-qa="oci compute instance action --action start --instance-id ocid1.instance.oc1.iad.anuwcljtnqrctfqcqzkojttozoz3selw7knh722aoij5uagwzbxbzr2ixz4a "
+alias stop-qa="oci compute instance action --action stop --instance-id ocid1.instance.oc1.iad.anuwcljtnqrctfqcqzkojttozoz3selw7knh722aoij5uagwzbxbzr2ixz4a "
+
+
+alias snip="scrot -s -q 100 /tmp/scrot.png ; xclip -selection c -t image/png < /tmp/scrot.png"
+
+
+# Kubectl shortcuts
+
+alias kld="k logs -n default --follow --tail 1000"
+alias klt="k logs -n tenants --follow --tail 1000"
+alias kd="k -n default"
+alias kt="k -n tenants"
+alias ks="k -n kube-system"
+alias kl="k -n logging"
+alias ki="k -n ingress"
+
+alias -g col_nodes="-o 'custom-columns=NAME:.metadata.name,RESTARTS:status.containerStatuses[*].restartCount,STATUS:.status.phase,NODE:.spec.nodeName'"
+alias -g cols="-o 'custom-columns=NAME:.metadata.name"
+# Gets images for all pods
+alias -g images="get pods -o 'custom-columns=NAME:.metadata.name,IMAGE:status.containerStatuses[*].image'"
+# Gets image IDs for all pods
+alias -g imageids="get pods -o 'custom-columns=NAME:.metadata.name,IMAGEID:status.containerStatuses[*].imageID'"
+
+alias kcustom="export KUBECONFIG=$HOME/.kube/config.prod.yaml"
+alias kdefault="export KUBECONFIG=$HOME/.kube/config"
+
+# Elasticsearch
+
+# List unassigned shards
+alias es-unassigned="curl -XGET http://localhost:9200/_cat/shards | grep UNASSIGNED"
+
+#To clean up unassigned shards:  
+#curl -XGET http://localhost:9201/_cat/shards | grep UNASSIGNED | awk {'print $1'} | xargs -i curl -XDELETE "http://localhost:9201/{}"
+
+alias elasticpass="kubectl get secrets elasticsearch-es-elastic-user -o jsonpath=\"{.data.elastic}\"|base64 -d|xclip"
