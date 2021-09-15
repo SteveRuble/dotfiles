@@ -49,4 +49,7 @@ xrandr --dpi 96
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=1
 
+xinput --map-to-output 'Wacom HID 488E Pen stylus' eDP-1
+xinput --map-to-output 'Wacom HID 488E Finger touch' eDP-1
+
 i3

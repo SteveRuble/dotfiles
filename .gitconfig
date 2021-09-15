@@ -39,3 +39,7 @@
         interactive = auto
         status = auto
 
+[pull]
+	rebase = true
+[rerere]
+	enabled = 1

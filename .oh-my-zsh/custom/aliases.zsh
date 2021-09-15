@@ -29,12 +29,22 @@ alias k8s-busybox="kubectl run -i -t busybox --restart=Never --rm=true --image=b
 
 
 function be() {
-     eval $(bosun env use $1)
+     bosun env use $1 > ~/.bosun/env
+     source ~/.bosun/env
+
+     alias kld="k logs -n $BOSUN_NAMESPACE_DEFAULT --follow --tail 1000"
+     alias kli="k logs -n $BOSUN_NAMESPACE_INGRESS --follow --tail 1000"
+     alias klt="k logs -n $BOSUN_NAMESPACE_TENANTS --follow --tail 1000"
+     alias kd="k -n $BOSUN_NAMESPACE_DEFAULT"
+     alias kt="k -n $BOSUN_NAMESPACE_TENANTS"
+     alias ks="k -n $BOSUN_NAMESPACE_SYSTEM"
+     alias kl="k -n $BOSUN_NAMESPACE_LOGGING"
+     alias ki="k -n $BOSUN_NAMESPACE_INGRESS"
 }
 alias b="bosun"
 
 function syncrelease(){
-     bosun release update current $1
+     bosun release update stable $1
      bosun deploy plan release
 }
 
@@ -101,11 +111,18 @@ alias ls="ls -al --color"
 
 alias git-back="git checkout @{-1}"
 
-alias snip="scrot -s '$HOME/images/shots/%Y-%m-%d-%k-%M-%S.png'"
+# alias snip="scrot -s '$HOME/images/shots/%Y-%m-%d-%k-%M-%S.png'"
 
 alias reload-aliases="source /home/steve/.oh-my-zsh/custom/aliases.zsh"
 
 
+# Run something and keep it alive
+function eternalize(){
+     until  eval "$@"; do
+      echo "Server '$0' crashed with exit code $?.  Respawning.." >&2
+      sleep 1
+     done
+}
 
 
 # BOSUN ALIASES
@@ -140,19 +157,13 @@ alias mk="microk8s kubectl"
 alias start-qa="oci compute instance action --action start --instance-id ocid1.instance.oc1.iad.anuwcljtnqrctfqcqzkojttozoz3selw7knh722aoij5uagwzbxbzr2ixz4a "
 alias stop-qa="oci compute instance action --action stop --instance-id ocid1.instance.oc1.iad.anuwcljtnqrctfqcqzkojttozoz3selw7knh722aoij5uagwzbxbzr2ixz4a "
 
+alias snip="scrot -s -o -q 100 /tmp/scrot.png ; xclip -selection c -t image/png < /tmp/scrot.png"
 
-alias snip="scrot -s -q 100 /tmp/scrot.png ; xclip -selection c -t image/png < /tmp/scrot.png"
 
 
 # Kubectl shortcuts
 
-alias kld="k logs -n default --follow --tail 1000"
-alias klt="k logs -n tenants --follow --tail 1000"
-alias kd="k -n default"
-alias kt="k -n tenants"
-alias ks="k -n kube-system"
-alias kl="k -n logging"
-alias ki="k -n ingress"
+alias kln="k logs -n naveego --follow --tail 1000"
 
 alias -g col_nodes="-o 'custom-columns=NAME:.metadata.name,RESTARTS:status.containerStatuses[*].restartCount,STATUS:.status.phase,NODE:.spec.nodeName'"
 alias -g cols="-o 'custom-columns=NAME:.metadata.name"
@@ -173,3 +184,9 @@ alias es-unassigned="curl -XGET http://localhost:9200/_cat/shards | grep UNASSIG
 #curl -XGET http://localhost:9201/_cat/shards | grep UNASSIGNED | awk {'print $1'} | xargs -i curl -XDELETE "http://localhost:9201/{}"
 
 alias elasticpass="kubectl get secrets elasticsearch-es-elastic-user -o jsonpath=\"{.data.elastic}\"|base64 -d|xclip"
+
+# Aunalytics VPN https://github.com/naveegoinc/developers/issues/132
+function aun_vpn(){
+     lpass show Aunalytics/aunalytics.com --password | tr -d '\n' | clipboard;
+     gp-saml-gui -S --gateway --clientos=Windows globalprotect.aunalytics.com -- --servercert pin-sha256:EETssAcjDEoVhW8J9RiiQpdM8NQgtl3nA/huqRMeOhg=
+}

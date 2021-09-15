@@ -2,13 +2,63 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/steve/.oh-my-zsh
+  export ZSH=/home/steve/src/github.com/naveego/oh-my-zsh 
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
 
+
+source $HOME/.oh-my-zsh/custom/bosun-spaceship.zsh
+
+SPACESHIP_PROMPT_ORDER=(
+  # time          # Time stamps section
+  user          # Username section
+  dir           # Current directory section
+  # host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  #hg            # Mercurial section (hg_branch  + hg_status)
+  #package       # Package version
+  node          # Node.js section
+  #ruby          # Ruby section
+  #elixir        # Elixir section
+  #xcode         # Xcode section
+  #swift         # Swift section
+  golang        # Go section
+  #php           # PHP section
+  #rust          # Rust section
+  #haskell       # Haskell Stack section
+  #julia         # Julia section
+ # docker        # Docker section
+  aws           # Amazon Web Services section
+  #venv          # virtualenv section
+  #conda         # conda virtualenv section
+  #pyenv         # Pyenv section
+  dotnet        # .NET section
+  #ember         # Ember.js section
+  kubecontext   # Kubectl context section  
+  exec_time     # Execution time
+  bosun
+  line_sep      # Line break
+  battery       # Battery level and status
+  #vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+
+SPACESHIP_RPROMPT_ORDER=(
+  time
+)
+
+SPACESHIP_TIME_SHOW=true
+
+SPACESHIP_BATTERY_THRESHOLD=25
+SPACESHIP_BATTERY_SHOW=true
+SPACESHIP_EXIT_CODE_SHOW=true
+
+SPACESHIP_KUBECONTEXT_PREFIX=""
 
 
 # Set list of themes to load
@@ -65,9 +115,9 @@ setopt INC_APPEND_HISTORY
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git docker npm docker-compose vault systemd 
-  ssh-agent 
-  aws 
-  kubectl 
+  ssh-agent
+  aws
+  kubectl
   helm zsh-completions
   zsh-autosuggestions
 )
@@ -120,62 +170,12 @@ export GOROOT="/usr/local/go"
 export PATH="$GOBIN:$GOROOT/bin:$HOME/.local/bin:$PATH"
 
 
-source $HOME/.oh-my-zsh/custom/bosun-spaceship.zsh
-
-SPACESHIP_PROMPT_ORDER=(
-  # time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  # host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  #hg            # Mercurial section (hg_branch  + hg_status)
-  #package       # Package version
-  node          # Node.js section
-  #ruby          # Ruby section
-  #elixir        # Elixir section
-  #xcode         # Xcode section
-  #swift         # Swift section
-  golang        # Go section
-  #php           # PHP section
-  #rust          # Rust section
-  #haskell       # Haskell Stack section
-  #julia         # Julia section
- # docker        # Docker section
-  aws           # Amazon Web Services section
-  #venv          # virtualenv section
-  #conda         # conda virtualenv section
-  #pyenv         # Pyenv section
-  dotnet        # .NET section
-  #ember         # Ember.js section
-  kubecontext   # Kubectl context section  
-  exec_time     # Execution time
-  bosun
-  line_sep      # Line break
-  battery       # Battery level and status
-  #vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-
-SPACESHIP_RPROMPT_ORDER=(
-  time
-)
-
-SPACESHIP_TIME_SHOW=true
-
-SPACESHIP_BATTERY_THRESHOLD=25
-SPACESHIP_BATTERY_SHOW=true
-SPACESHIP_EXIT_CODE_SHOW=true
-
-SPACESHIP_KUBECONTEXT_PREFIX=""
-
 
 # https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Options.md
 
-export NVM_DIR="/usr/share/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="/usr/share/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias rz="source ~/.zshrc"
 
@@ -189,6 +189,10 @@ export SPARK_BIN=/opt/spark/bin
 export PATH=$KAFKA_BIN:$SPARK_BIN:$PATH:
 
 export PATH=$HOME/bin:/snap/bin:/usr/sbin:$PATH
+
+export NPM_PACKAGES="${HOME}/.npm-packages"
+
+export PATH="$PATH:$NPM_PACKAGES/bin"
 
 function forget() {
   LC_ALL=C sed -i "/$1/d" $HISTFILE
